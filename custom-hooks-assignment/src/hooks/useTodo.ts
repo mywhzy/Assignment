@@ -1,5 +1,5 @@
-import {useEffect, useState} from 'react';
-import axios, {AxiosError} from 'axios';
+import { useEffect, useState } from 'react';
+import axios, { AxiosError } from 'axios';
 
 export type dataType = {
   userId: number,
@@ -19,12 +19,12 @@ export const useTodo = (id: number) => {
     axios.get(url + id)
       .then(response => {
         setData(response.data);
-        setIsLoading(!isLoading);
+        setIsLoading(false);
       }).catch(error => {
-      setIsLoading(!isLoading);
+      setIsLoading(false);
       setError(error);
     });
   }, []);
 
-  return {data, isLoading, error};
+  return { data, isLoading, error };
 };

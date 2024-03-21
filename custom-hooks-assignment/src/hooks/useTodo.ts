@@ -17,13 +17,9 @@ export const useTodo = (id: number) => {
 
   useEffect(() => {
     axios.get(url + id)
-      .then(response => {
-        setData(response.data);
-        setIsLoading(false);
-      }).catch(error => {
-      setIsLoading(false);
-      setError(error);
-    });
+      .then(response => setData(response.data))
+      .catch(error => setError(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return { data, isLoading, error };

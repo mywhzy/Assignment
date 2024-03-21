@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { ItemDetail } from '../components/ItemDetail';
 
-export const ItemDetailPage = () => {
+export const TodoDetailPage = () => {
   const id = Number(useParams().id);
   const { data, isLoading, error } = useTodo(id);
 

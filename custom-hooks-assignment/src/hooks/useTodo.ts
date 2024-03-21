@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
 
-export type dataType = {
+export type DataType = {
   userId: number,
   id: number,
   title: string,
@@ -9,7 +9,7 @@ export type dataType = {
 }
 
 export const useTodo = (id: number) => {
-  const [data, setData] = useState<undefined | dataType>(undefined);
+  const [data, setData] = useState<undefined | DataType>(undefined);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<undefined | AxiosError>(undefined);
 

@@ -8,11 +8,11 @@ export const TodoDetailPage = () => {
   const { data, isLoading, error } = useTodo(id);
 
   if (isLoading) return <h4>로딩 중...</h4>;
-  if (error) return <ErrorText>Error! id에 맞는 데이터를 불러올 수 없습니다.</ErrorText>;
+  if (!data || error) return <ErrorText>Error! id에 맞는 데이터를 불러올 수 없습니다.</ErrorText>;
 
   return (
     <Container>
-      <ItemDetail userId={data?.userId} id={data?.id} title={data?.title} completed={data?.completed} />
+      <ItemDetail userId={data.userId} id={data.id} title={data.title} completed={data?.completed} />
     </Container>
   );
 };

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios, { AxiosError } from 'axios';
+import { checkNaN } from '../utils/checkNaN';
 
-export type DataType = {
+export type Todo = {
   userId: number,
   id: number,
   title: string,
@@ -9,14 +10,20 @@ export type DataType = {
 }
 
 export const useTodo = (id: number) => {
-  const [data, setData] = useState<undefined | DataType>(undefined);
+  const [data, setData] = useState<Todo>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<undefined | AxiosError>(undefined);
+  const [error, setError] = useState<Error | AxiosError>();
 
   const url = process.env.REACT_APP_API_URL || '';
 
   useEffect(() => {
-    axios.get(url + id)
+    const err = checkNaN(id);
+    if (err) {
+      setError(err);
+      setIsLoading(false);
+      return;
+    }
+    axios.get<Todo>(url + id)
       .then(response => setData(response.data))
       .catch(error => setError(error))
       .finally(() => setIsLoading(false));

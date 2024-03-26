@@ -1,10 +1,10 @@
 import { styled } from 'styled-components';
 
 type ItemDetailProps = {
-  userId?: number,
-  id?: number,
-  title?: string,
-  completed?: boolean
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean
 }
 export const ItemDetail = ({ userId, id, title, completed }: ItemDetailProps) => {
   return (

@@ -2,6 +2,7 @@ import { useTodo } from '../hooks/useTodo';
 import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { ItemDetail } from '../components/ItemDetail';
+import { ErrorText } from '../components/ErrorText';
 
 export const TodoDetailPage = () => {
   const id = Number(useParams().id);
@@ -22,9 +23,4 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
-`;
-
-const ErrorText = styled.h3`
-    color: palevioletred;
-    font-style: italic;
 `;

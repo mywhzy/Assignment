@@ -1,16 +1,19 @@
 import { ListItem } from '../components/ListItem';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
-import { range } from 'lodash';
+import { useTodos } from '../hooks/useTodos';
 
 export const TodoListPage = () => {
   const navigate = useNavigate();
-  const indexes = range(1, 31);
+  const { data, isLoading, error } = useTodos();
+
+  if (!data || isLoading) return <h4>로딩 중...</h4>;
+  if (error) return <h3>Error!</h3>;
 
   return (
     <Container>
       <Title>To Do List</Title>
-      {indexes.map(id => <ListItem id={id} key={id} onClick={() => navigate(`/todos/${id}`)} />)}
+      {data.map(todo => <ListItem id={todo.id} key={todo.id} onClick={() => navigate(`/todos/${todo.id}`)} />)}
     </Container>
   );
 };

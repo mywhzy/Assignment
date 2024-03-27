@@ -1,11 +1,11 @@
 import { ListItem } from '../components/ListItem';
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
+import { range } from 'lodash';
 
 export const TodoListPage = () => {
   const navigate = useNavigate();
-  const listLength = 30;
-  const indexes = Array.from({ length: listLength }, (_, i) => i + 1);
+  const indexes = range(1, 31);
 
   return (
     <Container>

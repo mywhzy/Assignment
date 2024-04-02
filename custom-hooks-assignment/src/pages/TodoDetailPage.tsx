@@ -3,13 +3,14 @@ import { useParams } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { ItemDetail } from '../components/ItemDetail';
 import { ErrorText } from '../components/ErrorText';
+import { NotFoundPage } from './NotFoundPage';
 
 export const TodoDetailPage = () => {
   const id = Number(useParams().id);
   const { data, isLoading, error } = useTodo(id);
 
   if (isLoading) return <h4>로딩 중...</h4>;
-  if (!data || error) return <ErrorText>Error! id에 맞는 데이터를 불러올 수 없습니다.</ErrorText>;
+  if (!data || error) return <NotFoundPage />;
 
   return (
     <Container>

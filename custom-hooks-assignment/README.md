@@ -1,46 +1,17 @@
-# Getting Started with Create React App
+# custom-hooks 실습
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> To Do List 정보를 받아오는 API 통신을 위한 useTodos(), useTodo()를 구현해보는 실습입니다.
 
-## Available Scripts
+### Mission 1
 
-In the project directory, you can run:
+아래의 조건을 만족하는 useTodo()를 작성하고, 해당 hook을 사용하는 페이지를 만들어보시오
 
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 아래와 같은 페이지를 만드시오.
+   주소: /todos/:id
+   기능: id 에 맞는 https://jsonplaceholder.typicode.com/todos/:id 에서 데이터를 가져와서 화면에 그리는 페이지. 데이터는 2번 조건에서 서술하는 hook 을 통해 가져올
+   것
+2. 해당 페이지에서 const { data, isLoading, error } = useTodo(id); 의 형태로 호출할 수 있는 useTodo 를 생성할 것
+3. 데이터를 fetching 하는 도중에는 data 는 undefind, isLoading 은 true, error 는 undefind
+4. 데이터를 가져온 후 200번대 응답이면 data 는 가져온 data 자체 (즉 객체), isLoading 은 false, error 는 undefind
+5. 데이터를 가져온 후 400번대 혹은 500번대 응답이면 data 는 undefind, isLoading 은 false, error 는 에러 객체 그 자체
+6. 추가로 todos 페이지 라우팅 전 메인 페이지에서 To Do List의 모든 정보를 받아오는 useTodos()를 구현
